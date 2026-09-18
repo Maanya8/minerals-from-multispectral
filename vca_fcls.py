@@ -160,6 +160,7 @@ print(f"HFC estimated number of endmembers: {p_estimate}")
 
 p = p_estimate # your chosen endmember count, from hfc
 E, idx = vca(Y, n_endmembers=p)
+np.save('E.npy', E)
 
 # Plot extracted endmember spectra
 visualization_path = Path("visualizations")
@@ -183,6 +184,7 @@ E_pysptools = E.T  # shape (14, 188)
 # cube_3d is already (rows, cols, bands) — exactly what pysptools expects
 fcls = FCLS()
 abundance_maps = fcls.map(cube_3d, E_pysptools)  # shape: (rows, cols, p)
+np.save('abundance_maps.npy', abundance_maps)
 print(abundance_maps.shape)  # should be (250, 190, 14)
 
 fig, axes = plt.subplots(3, 5, figsize=(18, 10))

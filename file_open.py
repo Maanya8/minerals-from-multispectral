@@ -1,12 +1,17 @@
 import scipy.io as sio
 import numpy as np
 import matplotlib.pyplot as plt
+import scipy.io
 
 
 def cuprite_data():
     # Load the .mat file
     data = sio.loadmat("Cuprite/Cuprite_data_R188.mat")
-
+    select_bands = data['SlectBands']
+    # print(select_bands.shape)
+    # print(select_bands.dtype)
+    # print(select_bands.flatten()[:10], '...', select_bands.flatten()[-10:])
+    # print(select_bands.min(), select_bands.max())
 
     # print(data.keys())
 
@@ -31,3 +36,5 @@ def cuprite_data():
     # plt.show()
 
     return cube_3d
+
+# cube_3d = cuprite_data()
