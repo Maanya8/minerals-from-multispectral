@@ -158,7 +158,7 @@ p_estimate = hfc(Y_std)
 print(f"HFC estimated number of endmembers: {p_estimate}")
 
 
-p = p_estimate # your chosen endmember count, from hfc
+p = p_estimate - 2# your chosen endmember count, from hfc
 E, idx = vca(Y, n_endmembers=p)
 np.save('E.npy', E)
 
@@ -166,7 +166,7 @@ np.save('E.npy', E)
 visualization_path = Path("visualizations")
 visualization_path.mkdir(parents=True, exist_ok=True)
 plot_path = visualization_path
-graph_path = plot_path / "vca_extracted_endmembers.png"
+graph_path = plot_path / "vca_extracted_endmembers_p12.png"
 
 if not graph_path.exists():
     for i in range(p):
@@ -175,7 +175,7 @@ if not graph_path.exists():
     plt.ylabel('Reflectance')
     plt.legend()
     plt.title('VCA Extracted Endmembers')
-    plt.savefig(plot_path / "vca_extracted_endmembers.png", dpi=300, bbox_inches="tight")
+    plt.savefig(plot_path / "vca_extracted_endmembers_p12.png", dpi=300, bbox_inches="tight")
 
 
 # VCA output E is (bands, p) — pysptools wants (p, bands)
@@ -184,13 +184,13 @@ E_pysptools = E.T  # shape (14, 188)
 # cube_3d is already (rows, cols, bands) — exactly what pysptools expects
 fcls = FCLS()
 abundance_maps = fcls.map(cube_3d, E_pysptools)  # shape: (rows, cols, p)
-np.save('abundance_maps.npy', abundance_maps)
+np.save('abundance_maps_p12.npy', abundance_maps)
 print(abundance_maps.shape)  # should be (250, 190, 14)
 
 fig, axes = plt.subplots(3, 5, figsize=(18, 10))
 axes = axes.flatten()
 
-for i in range(p_estimate):
+for i in range(p):
     axes[i].imshow(abundance_maps[:, :, i], cmap='jet', vmin=0, vmax=1)
     axes[i].set_title(f'Endmember {i+1}')
     axes[i].axis('off')

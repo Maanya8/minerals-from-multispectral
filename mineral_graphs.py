@@ -36,11 +36,11 @@ from matplotlib.patches import Patch
 
 # ============================== CONFIG ======================================
 
-MATCHES_CSV = "endmember_mineral_matches_v2.csv"
-ABUNDANCE_MAPS_NPY = "abundance_maps.npy"
+MATCHES_CSV = "endmember_mineral_matches_p12.csv"
+ABUNDANCE_MAPS_NPY = "abundance_maps_p12.npy"
 
-GRID_OUTPUT_PNG = "abundance_maps_grid_v2.png"
-DOMINANT_MAP_OUTPUT_PNG = "dominant_mineral_map_v2.png"
+GRID_OUTPUT_PNG = "abundance_maps_grid_p12.png"
+DOMINANT_MAP_OUTPUT_PNG = "dominant_mineral_map_p12.png"
 
 # ============================================================================
 

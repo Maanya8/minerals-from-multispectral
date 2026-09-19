@@ -214,7 +214,7 @@ def main():
     for label, (lo, hi) in WINDOWS.items():
         all_rows += run_window(label, lo, hi, E, lib, wl_aligned, align_idx)
     df = pd.DataFrame(all_rows)
-    df.to_csv("endmember_mineral_matches_v2.csv", index=False)
+    df.to_csv("endmember_mineral_matches_v2_p12.csv", index=False)
     print("\nSaved endmember_mineral_matches_v2.csv")
 
 
